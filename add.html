@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head></head>
   <title>Trade maneger</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,6 +10,21 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="my.css">
+
+<script type="text/javascript">
+
+    function confirm_submit(){
+        var id = confirm('정말로 이 내용을 제출하시겠습니까?');
+
+        if (id) {
+        document.getElementById('form').submit();
+        } else {
+        }
+  }
+
+</script>
+  
+
 </head>
 <body>
 
@@ -42,7 +57,7 @@
 </nav>
 
 <div class="container">
-    <form action="/action_page.php">
+    <form action="/action_page.php" id="form">
 
         <h2>추석 설문조사</h2>
         <label for="left day">언제 내려가시나요?</label>
@@ -107,7 +122,7 @@
         <br>
 
 
-        <input type="submit" value="Submit">
+        <input type="button" value="Submit"  onclick="confirm_submit();">
 
     </form>
     
