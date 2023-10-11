@@ -14,15 +14,10 @@
 
 <script type="text/javascript">
 
-    function confirm_submit() {
-        if (validateForm()) {
-    var id = confirm('정말로 이 내용을 제출하시겠습니까?');
-    if (id) {
-      document.getElementById('form').submit();
-      alert('추가 완료!');
-    }
+    function confirm_submit() {      
+   alert('게시물이 추가됩니다');
   }
-}
+
     
     function validateForm() {
         var purchaseDate = document.getElementById('purchaseDate').value;
@@ -179,7 +174,8 @@
             <br>
 
 
-            <input type="button" value="Submit" onclick="confirm_submit();">
+            <input type="submit" value="Submit" onclick="confirm_submit();">
+            
 
         </form>
 
