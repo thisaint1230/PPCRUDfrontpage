@@ -11,6 +11,19 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="my.css">
 
+  <script type="text/javascript">
+
+    function confirm_delete(){
+
+        if (confirm('정말로 이 내용을 삭제시겠습니까?')) {
+        alert('삭제되었습니다');
+        return true;
+        } 
+            else {
+        }
+  }
+
+</script>
 </head>
 <body>
 
@@ -54,9 +67,9 @@
         
         <div class="price">price</div>
         
-        <input type="button" value="Submit" style="col-5"  onclick="confirm_submit();">
+        <input type="button" value="Edit"  onclick = "location.href = '/edit.html' ">
         
-        <input type="button" value="Submit" style="col-3" onclick="confirm_submit();">
+        <input type="button" value="Delete"  onclick="confirm_delete();">
       </div>
     </div>
   
