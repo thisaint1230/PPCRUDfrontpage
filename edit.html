@@ -1,139 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
-<head></head>
-  <title>Trade maneger</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="my.css">
+<head></head>
+<title>Trade maneger</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="my.css">
 
 <script type="text/javascript">
 
-    function confirm_retouch(){
-        var id = confirm('정말로 이 내용으로 수정하시겠습니까?');
-
-        if (id) {
-        document.getElementById('form').submit();
-        } else {
-        }
+    function confirm_submit() {
+        if (validateForm()) {
+    var id = confirm('정말로 이 내용으로 수정하시겠습니까?');
+    if (id) {
+      document.getElementById('form').submit();
+    }
   }
+}
+    
+    function validateForm() {
+        var purchaseDate = document.getElementById('purchaseDate').value;
+        if (!purchaseDate) {
+            alert('날짜를 입력해주세요');
+            return false;
+        }
+        var purchaseDate = document.getElementById('productPrice').value;
+        if (!productPrice) {
+            alert('가격을 입력해주세요');
+            return false;
+        }
+        
+        var productName = document.getElementById('productName').value;
+        if (!productName) {
+            alert('이름을 입력해주세요');
+            return false;
+        }
+
+        var productGrade = document.getElementById('productGrade').value;
+        if (!productGrade) {
+            alert('만족도를 입력해주세요');
+            return false;
+        }
+
+        var checkbox1 = document.getElementById('checkbox1').checked;
+        var checkbox2 = document.getElementById('checkbox2').checked;
+        var checkbox3 = document.getElementById('checkbox3').checked;
+        var checkbox4 = document.getElementById('checkbox4').checked;
+        if (!(checkbox1 || checkbox2 || checkbox3 || checkbox4)) {
+            alert('체크박스를 선택해 주세요');
+            return false;
+        }
+
+        var satisfaction = document.getElementById('satisfaction').value;
+        if (!satisfaction) {
+            alert('만족도를 입력해주세요');
+            return false;
+        }
+
+        var memo = document.getElementById('memo').value;
+        if (!memo) {
+            alert('메모해 주셔요 없으면 아무거나 입력해주세요');
+            return false;
+        }
+
+        return true;
+    }
 
 </script>
-  
+
 
 </head>
+
 <body>
 
-<div class="jumbotron">
-  <div class="container text-center">
-    <h1>Trade maneger</h1>      
-    <p> 당근마켓,번개장터,중고나라 판/구매자를 위해</p>
-  </div>
-</div>
-
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" href="/index.html"><i class="fa fa-home"></i></a>
+    <div class="jumbotron">
+        <div class="container text-center">
+            <h1>Trade maneger</h1>
+            <p> 당근마켓,번개장터,중고나라 판/구매자를 위해</p>
+        </div>
     </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li class="active" ><a href="/add.html">Add</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
 
-<div class="container">
-    <form action="/action_page.php" id="form">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/index.html"><i class="fa fa-home"></i></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/add.html">Add</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-        <h2>추석 설문조사</h2>
-        <label for="left day">언제 내려가시나요?</label>
-        <input type="date">
-        <br>
+    <div class="container">
+        <form id="form">
 
-
-        <fieldset>
-            <legend> 인적사항 </legend>
-            <label for="fname">성</label>
-            <input type="text" /> <br>
-            <label for="lname">이름</label>
-            <input type="text" /><br>
+            <h2> 관리 품목 추가 </h2>
+            <label for="left day">언제 구매/판매 하시나요? </label>
+            <input type="date" id="purchaseDate" value="2023-10-10">
+            <br>
             <br>
 
 
-            <label for="grade">학년</label>
-            <select id="grade">
-                <option value="1학년">1</option>
-                <option value="2학년">2</option>
-                <option value="3학년" selected>3</option>
-                <option value="4학년">4</option>
-                <option value="그이상">그이상</option>
-            </select>
+            <fieldset>
+                <legend> 제품 사항 </legend>
+                <label for="fname">제품 이름</label>
+                <input type="text" id="productName" value="엄청비싼기타" /> <br> <br>
+                <label for="price">제품 가격</label>
+                <input type="text" id="productPrice"  value="2000000"/> <br> <br>
+                <label for="grade">제품 상태</label>
+                <select id="productGrade">
+                    <option value="매우나쁨">매우나쁨</option>
+                    <option value="나쁨">나쁨</option>
+                    <option value="보통" >보통</option>
+                    <option value="좋음">좋음</option>
+                    <option value="매우좋음" selected>매우좋음</option>
+                </select>
+                <br>
 
-        </fieldset>
-        <br>
+                <label for="img">제품 사진</label>
+                <input type="file" name="file" >
 
-        <fieldset>
-            <legend>수업</legend>
-            <h4> 추석기간동안 과제가 많습니까 ? </h4>
 
-            <input type="checkbox">
-            <label for="homework"> 평소보다 많다 </label><br>
-            <input type="checkbox">
-            <label for="homework"> 평소와 비슷하다</label><br>
-            <input type="checkbox">
-            <label for="homework"> 평소보다 없다</label> <br>
-            <input type="checkbox">
-            <label for="homework"> 난 없지롱 </label>
+                <br>
+
+            </fieldset>
             <br>
-            <h4> 평소와 피교해서 유달리 어렵게 느겨지나요 ?
-            </h4>
-                하나도 안어렵다
-                <input type="range" id="a" name="a" value="50">
-                미친듯이 어렵다
-        </fieldset>
+
+            <fieldset>
+                <legend> 중고거래 </legend>
+                <h4> 어느 사이트에서 거래했나요? ? </h4>
+
+                <input type="checkbox" id="checkbox1" checked>
+                <label for="cite"> 중고나라 </label><br>
+                <input type="checkbox" id="checkbox2">
+                <label for="cite"> 당근마켓 </label><br>
+                <input type="checkbox" id="checkbox3">
+                <label for="cite"> 번개장터 </label> <br>
+                <input type="checkbox" id="checkbox4">
+                <label for="cite"> 그 외 </label>
+
+
+                <br>
+                <h4> 거래만족도는 ?
+                </h4>
+
+                <input type="range" id="satisfaction" value="100">
+
+            </fieldset>
+
+
+            <br>
 
 
 
-        <br>
+            <strong>
+                <h1>메모 </h1>
+
+            </strong>
+            <br>
+            <textarea name="message" id="memo" rows="10" cols="30" style="color: rgb(147, 145, 145);">가장 사고싶었던 기타</textarea>
+
+            <br>
 
 
+            <input type="button" value="Submit" onclick="confirm_submit();">
 
-        <strong>
-            교수님께 하고싶은 말이 있다면 ?
+        </form>
 
-        </strong>
-        <br>
-        <textarea name="message" rows="10" cols="30" style="color: rgb(147, 145, 145);">입력하세요</textarea>
-
-        <br>
+    </div>
 
 
-        <input type="button" value="수정"  onclick="confirm_retouch();">
+    <footer class="container-fluid text-center">
+        <h4> 수정 후 page not found 가 나오면 정상적으로 제출됨</h4>
+        <h1> </h1>
 
-    </form>
-    
-</div>
-
-
-<footer class="container-fluid text-center">
-  <h4> 수정 후 page not found 가 나오면 정상적으로 제출됨  </h4> 
-  <h1> </h1>
-  
-</footer>
+    </footer>
 
 </body>
+
 </html>
